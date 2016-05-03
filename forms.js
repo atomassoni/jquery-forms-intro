@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     //event listeners
     $('#employeeinfo').on('submit', addEmployee);
-    $('#container').on('click', 'button', removeEmployee);
+    $('#container').on('click', '.delete', removeEmployee);
 
     //builds the employee info list for the DOM and adds it
     function appendDomEmp(empInfo) {
@@ -44,11 +44,9 @@ $(document).ready(function() {
         var $empArray = $('.person');
 
         for (var i = 0; i < $empArray.length; i++) {
-            console.log($empArray[i]);
             total += $('.person').eq(i).data("monthlysalary").monthlysalary;
         }
 
-        console.log('total', total);
         return total;
     }
 
@@ -64,8 +62,8 @@ $(document).ready(function() {
 
         // clear out inputs
         $('#employeeinfo').find('input[type=text]').val('');
-        console.log(values);
-
+        $('#employeeinfo').find('input[type=number]').val('');
+        $('#employeefirstname').focus();
         //add to DOM
         appendDomEmp(values);
         //calculate monthly salary
